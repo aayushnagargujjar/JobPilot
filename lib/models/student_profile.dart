@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class StudentProfile {
   String name;
   String email;
+  bool isComplete;
   List<Education> education;
   List<Project> projects;
   List<String> skills;
@@ -10,12 +13,44 @@ class StudentProfile {
   StudentProfile({
     required this.name,
     required this.email,
+    this.isComplete = false,
     required this.education,
     required this.projects,
     required this.skills,
     required this.constraints,
     required this.bulletBank,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'isComplete': isComplete,
+      'skills': skills,
+      'bulletBank': bulletBank,
+      'education': education.map((e) => e.toMap()).toList(),
+      'projects': projects.map((p) => p.toMap()).toList(),
+      'constraints': constraints.toMap(),
+      'lastUpdated': FieldValue.serverTimestamp(),
+    };
+  }
+
+  factory StudentProfile.fromMap(Map<String, dynamic> map) {
+    return StudentProfile(
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+      isComplete: map['isComplete'] ?? false,
+      skills: List<String>.from(map['skills'] ?? []),
+      bulletBank: List<String>.from(map['bulletBank'] ?? []),
+      education: (map['education'] as List? ?? [])
+          .map((e) => Education.fromMap(e))
+          .toList(),
+      projects: (map['projects'] as List? ?? [])
+          .map((p) => Project.fromMap(p))
+          .toList(),
+      constraints: Constraints.fromMap(map['constraints'] ?? {}),
+    );
+  }
 }
 
 class Education {
@@ -23,12 +58,29 @@ class Education {
   final String degree;
   final String year;
 
-  Education(this.school, this.degree, this.year);
+  Education({
+    required this.school,
+    required this.degree,
+    required this.year,
+  });
 
-  factory Education.fromJson(Map<String, dynamic> json) {
-    return Education(json['school'] ?? '', json['degree'] ?? '', json['year'] ?? '');
+  Map<String, dynamic> toMap() {
+    return {
+      'school': school,
+      'degree': degree,
+      'year': year,
+    };
+  }
+
+  factory Education.fromMap(Map<String, dynamic> map) {
+    return Education(
+      school: map['school'] ?? '',
+      degree: map['degree'] ?? '',
+      year: map['year'] ?? '',
+    );
   }
 }
+
 
 class Project {
   final String id;
@@ -37,15 +89,31 @@ class Project {
   final List<String> skills;
   final String? link;
 
-  Project(this.id, this.name, this.description, this.skills, this.link);
+  Project({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.skills,
+    this.link,
+  });
 
-  factory Project.fromJson(Map<String, dynamic> json) {
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'skills': skills,
+      'link': link,
+    };
+  }
+
+  factory Project.fromMap(Map<String, dynamic> map) {
     return Project(
-      json['id'] ?? '',
-      json['name'] ?? '',
-      json['description'] ?? '',
-      List<String>.from(json['skills'] ?? []),
-      json['link'],
+      id: map['id'] ?? '',
+      name: map['name'] ?? '',
+      description: map['description'] ?? '',
+      skills: List<String>.from(map['skills'] ?? []),
+      link: map['link'],
     );
   }
 }
@@ -53,7 +121,27 @@ class Project {
 class Constraints {
   List<String> location;
   bool remoteOnly;
-  bool requireVisa;
 
-  Constraints({required this.location, required this.remoteOnly, required this.requireVisa});
+
+  Constraints({
+    required this.location,
+    required this.remoteOnly,
+
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'location': location,
+      'remoteOnly': remoteOnly,
+
+    };
+  }
+
+  factory Constraints.fromMap(Map<String, dynamic> map) {
+    return Constraints(
+      location: List<String>.from(map['location'] ?? []),
+      remoteOnly: map['remoteOnly'] ?? false,
+
+    );
+  }
 }

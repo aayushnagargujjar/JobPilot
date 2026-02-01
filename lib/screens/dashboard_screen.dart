@@ -100,7 +100,6 @@ class DashboardScreen extends StatelessWidget {
                   rows: provider.jobs.where((j) => j.status != JobStatus.NEW).take(5).map((job) {
                     return DataRow(cells: [
                       DataCell(Text(job.company, style: TextStyle(fontWeight: FontWeight.bold))),
-                      DataCell(Text(job.title)),
                       DataCell(StatusBadge(status: job.status)),
                       DataCell(Text("${job.matchScore}%", style: TextStyle(color: job.matchScore > 80 ? Colors.greenAccent : Colors.amber))),
                       DataCell(job.evidenceUsed != null ? Icon(LucideIcons.checkCircle, size: 16, color: AppTheme.primary) : Text("-")),

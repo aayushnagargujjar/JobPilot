@@ -19,7 +19,11 @@ class JobsScreen extends StatelessWidget {
             children: [
               Text("Job Queue", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               ElevatedButton.icon(
-                onPressed: () => provider.runSearchAndRank(),
+                onPressed: () {
+                  //Ensure you have this method in provider (from previous steps)
+                 // provider._fetchJobsFromCloud().then((_) => provider.runSearchAndRank());
+                  provider.runSearchAndRank();
+                },
                 icon: Icon(LucideIcons.refreshCw, size: 16),
                 label: Text("Refresh & Rank"),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.white10, foregroundColor: Colors.white),
@@ -33,7 +37,7 @@ class JobsScreen extends StatelessWidget {
                 maxCrossAxisExtent: 400,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
-                childAspectRatio: 1.4,
+                childAspectRatio: 1.3, // Adjusted for new content
               ),
               itemCount: provider.jobs.length,
               itemBuilder: (ctx, i) {
@@ -51,7 +55,8 @@ class JobsScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(job.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                // UPDATED: job.role instead of job.title
+                                Text(job.role, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16), maxLines: 1, overflow: TextOverflow.ellipsis),
                                 Text(job.company, style: TextStyle(color: Colors.grey, fontSize: 12)),
                               ],
                             ),
@@ -72,12 +77,15 @@ class JobsScreen extends StatelessWidget {
                         children: [
                           Chip(label: Text(job.location, style: TextStyle(fontSize: 10)), padding: EdgeInsets.zero, visualDensity: VisualDensity.compact, backgroundColor: Colors.white10),
                           Chip(label: Text(job.type, style: TextStyle(fontSize: 10)), padding: EdgeInsets.zero, visualDensity: VisualDensity.compact, backgroundColor: Colors.white10),
+                          // NEW: Experience Level
+                          Chip(label: Text(job.experienceLevel, style: TextStyle(fontSize: 10)), padding: EdgeInsets.zero, visualDensity: VisualDensity.compact, backgroundColor: Colors.white10),
                         ],
                       ),
                       Spacer(),
+                      // UPDATED: job.skills instead of job.requirements
                       Wrap(
                         spacing: 4,
-                        children: job.requirements.take(3).map((r) => Container(
+                        children: job.skills.take(3).map((r) => Container(
                           padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(border: Border.all(color: Colors.grey[800]!), borderRadius: BorderRadius.circular(4)),
                           child: Text(r, style: TextStyle(fontSize: 10, color: Colors.grey)),
@@ -88,7 +96,8 @@ class JobsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           StatusBadge(status: job.status),
-                          Text(job.postedDate, style: TextStyle(fontSize: 10, color: Colors.grey)),
+                          // UPDATED: Start Date instead of Posted Date
+                          Text("Starts: ${job.startDate}", style: TextStyle(fontSize: 10, color: Colors.grey)),
                         ],
                       )
                     ],
