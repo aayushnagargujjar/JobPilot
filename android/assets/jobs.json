@@ -1,0 +1,854 @@
+[
+  {
+    "jobId": "JP-001",
+    "company": "NeuraStack",
+    "role": "Data Analyst Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-26",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "SQL",
+      "Data Analysis"
+    ],
+    "description": "Work as a data analyst intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-001"
+  },
+  {
+    "jobId": "JP-002",
+    "company": "AstraSoft",
+    "role": "AI Engineer Intern",
+    "location": "Remote",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-07-08",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-002"
+  },
+  {
+    "jobId": "JP-003",
+    "company": "PixelForge",
+    "role": "ML Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-21",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-003"
+  },
+  {
+    "jobId": "JP-004",
+    "company": "ByteWorks",
+    "role": "Android Developer Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-14",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-004"
+  },
+  {
+    "jobId": "JP-005",
+    "company": "AstraSoft",
+    "role": "Full Stack Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-30",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "Work as a full stack intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-005"
+  },
+  {
+    "jobId": "JP-006",
+    "company": "NovaTech Labs",
+    "role": "Frontend Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-06-11",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-006"
+  },
+  {
+    "jobId": "JP-007",
+    "company": "NovaTech Labs",
+    "role": "Frontend Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-06",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-007"
+  },
+  {
+    "jobId": "JP-008",
+    "company": "ByteWorks",
+    "role": "ML Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-07-21",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-008"
+  },
+  {
+    "jobId": "JP-009",
+    "company": "InnoSoft",
+    "role": "Android Developer Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-10",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-009"
+  },
+  {
+    "jobId": "JP-010",
+    "company": "NeuraStack",
+    "role": "Data Analyst Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-14",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "SQL",
+      "Data Analysis"
+    ],
+    "description": "Work as a data analyst intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-010"
+  },
+  {
+    "jobId": "JP-011",
+    "company": "InnoSoft",
+    "role": "Android Developer Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-06-11",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-011"
+  },
+  {
+    "jobId": "JP-012",
+    "company": "PixelForge",
+    "role": "Backend Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-21",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-012"
+  },
+  {
+    "jobId": "JP-013",
+    "company": "CloudNest",
+    "role": "Frontend Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-04",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-013"
+  },
+  {
+    "jobId": "JP-014",
+    "company": "DevMatrix",
+    "role": "Backend Intern",
+    "location": "Remote",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-21",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-014"
+  },
+  {
+    "jobId": "JP-015",
+    "company": "NovaTech Labs",
+    "role": "ML Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-02",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-015"
+  },
+  {
+    "jobId": "JP-016",
+    "company": "CloudNest",
+    "role": "Backend Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-07-27",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-016"
+  },
+  {
+    "jobId": "JP-017",
+    "company": "AstraSoft",
+    "role": "Frontend Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-15",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-017"
+  },
+  {
+    "jobId": "JP-018",
+    "company": "InnoSoft",
+    "role": "Flutter Developer Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-07",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
+    "description": "Work as a flutter developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-018"
+  },
+  {
+    "jobId": "JP-019",
+    "company": "AppSphere",
+    "role": "AI Engineer Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-15",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-019"
+  },
+  {
+    "jobId": "JP-020",
+    "company": "NovaTech Labs",
+    "role": "AI Engineer Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-24",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-020"
+  },
+  {
+    "jobId": "JP-021",
+    "company": "DataLoop",
+    "role": "Full Stack Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-17",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "Work as a full stack intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-021"
+  },
+  {
+    "jobId": "JP-022",
+    "company": "InnoSoft",
+    "role": "Android Developer Intern",
+    "location": "Remote",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-30",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-022"
+  },
+  {
+    "jobId": "JP-023",
+    "company": "Orbit Systems",
+    "role": "Frontend Intern",
+    "location": "Remote",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-21",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-023"
+  },
+  {
+    "jobId": "JP-024",
+    "company": "AstraSoft",
+    "role": "AI Engineer Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-06-14",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-024"
+  },
+  {
+    "jobId": "JP-025",
+    "company": "ByteWorks",
+    "role": "Full Stack Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-22",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "Work as a full stack intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-025"
+  },
+  {
+    "jobId": "JP-026",
+    "company": "Orbit Systems",
+    "role": "ML Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-12",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-026"
+  },
+  {
+    "jobId": "JP-027",
+    "company": "AstraSoft",
+    "role": "ML Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-12",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-027"
+  },
+  {
+    "jobId": "JP-028",
+    "company": "NeuraStack",
+    "role": "Backend Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-22",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-028"
+  },
+  {
+    "jobId": "JP-029",
+    "company": "AppSphere",
+    "role": "Android Developer Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-29",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-029"
+  },
+  {
+    "jobId": "JP-030",
+    "company": "DataLoop",
+    "role": "Frontend Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-07",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-030"
+  },
+  {
+    "jobId": "JP-031",
+    "company": "ZenithCode",
+    "role": "AI Engineer Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-25",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-031"
+  },
+  {
+    "jobId": "JP-032",
+    "company": "DevMatrix",
+    "role": "Full Stack Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-18",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "Work as a full stack intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-032"
+  },
+  {
+    "jobId": "JP-033",
+    "company": "AppSphere",
+    "role": "Frontend Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-07-15",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-033"
+  },
+  {
+    "jobId": "JP-034",
+    "company": "ZenithCode",
+    "role": "Flutter Developer Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-28",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
+    "description": "Work as a flutter developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-034"
+  },
+  {
+    "jobId": "JP-035",
+    "company": "PixelForge",
+    "role": "Frontend Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-06-09",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-035"
+  },
+  {
+    "jobId": "JP-036",
+    "company": "AppSphere",
+    "role": "Android Developer Intern",
+    "location": "Delhi",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-16",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    "description": "Work as a android developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-036"
+  },
+  {
+    "jobId": "JP-037",
+    "company": "CodeCrafters",
+    "role": "Flutter Developer Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-04",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
+    "description": "Work as a flutter developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-037"
+  },
+  {
+    "jobId": "JP-038",
+    "company": "CloudNest",
+    "role": "ML Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-08-24",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-038"
+  },
+  {
+    "jobId": "JP-039",
+    "company": "PixelForge",
+    "role": "Backend Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-20",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-039"
+  },
+  {
+    "jobId": "JP-040",
+    "company": "LogicHive",
+    "role": "AI Engineer Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-10",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-040"
+  },
+  {
+    "jobId": "JP-041",
+    "company": "AppSphere",
+    "role": "AI Engineer Intern",
+    "location": "Pune",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-19",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-041"
+  },
+  {
+    "jobId": "JP-042",
+    "company": "AppSphere",
+    "role": "ML Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-02",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "Machine Learning"
+    ],
+    "description": "Work as a ml intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-042"
+  },
+  {
+    "jobId": "JP-043",
+    "company": "CodeCrafters",
+    "role": "Data Analyst Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-20",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "SQL",
+      "Data Analysis"
+    ],
+    "description": "Work as a data analyst intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-043"
+  },
+  {
+    "jobId": "JP-044",
+    "company": "ByteWorks",
+    "role": "Full Stack Intern",
+    "location": "Chennai",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-14",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "Work as a full stack intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-044"
+  },
+  {
+    "jobId": "JP-045",
+    "company": "ZenithCode",
+    "role": "AI Engineer Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-10",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "AI",
+      "LLMs"
+    ],
+    "description": "Work as a ai engineer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-045"
+  },
+  {
+    "jobId": "JP-046",
+    "company": "DataLoop",
+    "role": "Backend Intern",
+    "location": "Remote",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-06-10",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Node.js",
+      "MongoDB",
+      "APIs"
+    ],
+    "description": "Work as a backend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-046"
+  },
+  {
+    "jobId": "JP-047",
+    "company": "AppSphere",
+    "role": "Data Analyst Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-08-05",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Python",
+      "SQL",
+      "Data Analysis"
+    ],
+    "description": "Work as a data analyst intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-047"
+  },
+  {
+    "jobId": "JP-048",
+    "company": "InnoSoft",
+    "role": "Flutter Developer Intern",
+    "location": "Bangalore",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-07-26",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
+    "description": "Work as a flutter developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-048"
+  },
+  {
+    "jobId": "JP-049",
+    "company": "PixelForge",
+    "role": "Flutter Developer Intern",
+    "location": "Mumbai",
+    "jobType": "Internship",
+    "visaRequired": true,
+    "startDate": "2026-07-02",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
+    "description": "Work as a flutter developer intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-049"
+  },
+  {
+    "jobId": "JP-050",
+    "company": "AppSphere",
+    "role": "Frontend Intern",
+    "location": "Hyderabad",
+    "jobType": "Internship",
+    "visaRequired": false,
+    "startDate": "2026-06-01",
+    "experienceLevel": "Fresher",
+    "skillsRequired": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Work as a frontend intern on real-world projects.",
+    "applyEndpoint": "/apply/JP-050"
+  }
+]
