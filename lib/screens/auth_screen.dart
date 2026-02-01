@@ -110,7 +110,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.background,
+
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobpilot/screens/auth_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'theme.dart';

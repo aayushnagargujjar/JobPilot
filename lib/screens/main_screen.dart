@@ -55,9 +55,9 @@ class _MainScreenState extends State<MainScreen> {
                         index: _selectedIndex,
                         children: [
                          DashboardScreen(onNavigate: (i) => setState(() => _selectedIndex = i)),
-                         // JobsScreen(),
-                         // ArtifactsScreen(),
-                         // PolicyScreen(),
+                         JobsScreen(),
+                          ArtifactsScreen(),
+                         PolicyScreen(),
                         ],
                       ),
                     ),
