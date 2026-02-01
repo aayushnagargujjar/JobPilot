@@ -4,7 +4,7 @@
 
 
     <application
-        android:label="jobpilot"
+        android:label="JobPilot"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

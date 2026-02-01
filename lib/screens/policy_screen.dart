@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
-import '../models/job_model.dart';
 import '../providers/app_provider.dart';
 import '../theme.dart';
 import '../widgets/glass_container.dart';
@@ -18,27 +15,28 @@ class PolicyScreen extends StatefulWidget {
 }
 
 class _PolicyScreenState extends State<PolicyScreen> {
-  bool _isUploading = false;
 
-  Future<void> _handleSeedData() async {
-    setState(() => _isUploading = true);
+  Future<void> _handleLogout() async {
     try {
-      await uploadJobs();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Firestore seeded successfully!"),
-          backgroundColor: Colors.green,
-        ),
-      );
+      // 1. Sign out from Firebase
+      await FirebaseAuth.instance.signOut();
+
+      // 2. Clear stack and redirect to Auth Screen
+      if (mounted) {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/auth',
+              (route) => false,
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Error: ${e.toString()}"),
-          backgroundColor: Colors.redAccent,
-        ),
-      );
-    } finally {
-      setState(() => _isUploading = false);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Error logging out: ${e.toString()}"),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
+      }
     }
   }
 
@@ -47,20 +45,21 @@ class _PolicyScreenState extends State<PolicyScreen> {
     final provider = context.watch<AppProvider>();
 
     return ListView(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       children: [
+        // --- Safety Guardrails Section ---
         GlassContainer(
           child: Row(
             children: [
-              Icon(LucideIcons.shieldAlert, size: 32, color: Colors.redAccent),
-              SizedBox(width: 16),
+              const Icon(LucideIcons.shieldAlert, size: 32, color: Colors.redAccent),
+              const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Apply Guardrails",
+                    const Text("Apply Guardrails",
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                    Text(
+                    const Text(
                         "Safety protocols active. Agent will refuse to apply if rules are violated.",
                         style: TextStyle(color: Colors.grey, fontSize: 12)),
                   ],
@@ -77,21 +76,22 @@ class _PolicyScreenState extends State<PolicyScreen> {
             ],
           ),
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
+        // --- Thresholds Section ---
         GlassContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Thresholds",
+              const Text("Thresholds",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Min Match Score"),
+                  const Text("Min Match Score"),
                   Text("${provider.policy.minMatchThreshold}%",
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: AppTheme.primary, fontWeight: FontWeight.bold))
                 ],
               ),
@@ -105,7 +105,7 @@ class _PolicyScreenState extends State<PolicyScreen> {
                   provider.notifyListeners();
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextField(
                 decoration: InputDecoration(
                   labelText: "Max Daily Applications",
@@ -124,15 +124,16 @@ class _PolicyScreenState extends State<PolicyScreen> {
             ],
           ),
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
+        // --- API Configuration Section ---
         GlassContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("API Configuration",
+              const Text("API Configuration",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextField(
                 decoration: InputDecoration(
                   labelText: "Gemini API Key",
@@ -142,81 +143,80 @@ class _PolicyScreenState extends State<PolicyScreen> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide.none),
-                  prefixIcon: Icon(LucideIcons.cpu),
+                  prefixIcon: const Icon(LucideIcons.cpu),
                 ),
                 obscureText: true,
                 onChanged: (v) => provider.apiKey = v,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
                 child: Text("Without a key, the agent runs in Simulation Mode.",
                     style: TextStyle(fontSize: 10, color: Colors.orange)),
               )
             ],
           ),
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
+        // --- Account Management (REPLACED SEED DATA) ---
         GlassContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Data Management",
+              const Text("Account Management",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 16),
-              Text(
-                "Upload local jobs.json data to your live Firestore collection.",
+              const SizedBox(height: 16),
+              const Text(
+                "Sign out of the application. You will need to log in again to manage your agent.",
                 style: TextStyle(color: Colors.grey, fontSize: 12),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton.icon(
-                  onPressed: _isUploading ? null : _handleSeedData,
+                  onPressed: () => _showLogoutDialog(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primary.withOpacity(0.1),
-                    foregroundColor: AppTheme.primary,
-                    side: BorderSide(color: AppTheme.primary.withOpacity(0.3)),
+                    backgroundColor: Colors.redAccent.withOpacity(0.1),
+                    foregroundColor: Colors.redAccent,
+                    side: BorderSide(color: Colors.redAccent.withOpacity(0.3)),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
                   ),
-                  icon: _isUploading
-                      ? SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                        strokeWidth: 2, color: AppTheme.primary),
-                  )
-                      : Icon(LucideIcons.database),
-                  label: Text(_isUploading ? "Uploading..." : "Seed Jobs to Firestore"),
+                  icon: const Icon(LucideIcons.logOut),
+                  label: const Text("Logout"),
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
       ],
     );
   }
-}
 
-Future<void> uploadJobs() async {
-  final CollectionReference jobsRef = FirebaseFirestore.instance.collection('jobs');
-  final WriteBatch batch = FirebaseFirestore.instance.batch();
-
-  try {
-    final String response = await rootBundle.loadString('assets/jobs.json');
-    final List<dynamic> jsonData = json.decode(response);
-
-    for (var item in jsonData) {
-      JobModel job = JobModel.fromJson(item);
-      DocumentReference docRef = jobsRef.doc(job.jobId);
-      batch.set(docRef, job.toMap());
-    }
-
-    await batch.commit();
-  } catch (e) {
-    throw Exception("Failed to upload: $e");
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.grey[900],
+        title: const Text("Sign Out", style: TextStyle(color: Colors.white)),
+        content: const Text("Are you sure you want to log out of your account?",
+            style: TextStyle(color: Colors.grey)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel", style: TextStyle(color: Colors.white)),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _handleLogout();
+            },
+            child: const Text("Logout", style: TextStyle(color: Colors.redAccent)),
+          ),
+        ],
+      ),
+    );
   }
 }

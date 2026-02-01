@@ -33,6 +33,9 @@ class JobPilotApp extends StatelessWidget {
       title: 'Job Pilot',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
+        routes: {
+          '/auth': (context) => const AuthScreen(),
+        },
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
