@@ -11,6 +11,8 @@ import '../theme.dart';
 import '../widgets/glass_container.dart';
 
 class ArtifactsScreen extends StatefulWidget {
+  const ArtifactsScreen({super.key});
+
   @override
   State<ArtifactsScreen> createState() => _ArtifactsScreenState();
 }

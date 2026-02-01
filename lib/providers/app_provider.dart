@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import '../models/job.dart';
@@ -13,7 +14,7 @@ import '../services/resume_services.dart';
 class AppProvider extends ChangeNotifier {
   // 🔥 FIREBASE SETUP
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  final String userId = "hackathon_user_001"; // Hardcoded for demo
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
   // State
   StudentProfile profile = kDefaultProfile;
@@ -127,9 +128,14 @@ class AppProvider extends ChangeNotifier {
   // ---------------------------------------------------------------------------
 
   Future<void> runResumeParser(String text) async {
+    if (userId == null) {
+      addLog('SYSTEM', 'No user logged in. Cannot save profile.', 'ERROR');
+      return;
+    }
+
     addLog('ARTIFACT', 'Analyzing resume text...', 'INFO');
 
-    // 1. Quick Regex Update
+    // 1. Quick Regex Update for UI feedback
     final basicInfo = ResumeService.extractBasicInfo(text);
     if (basicInfo['email'] != "" || basicInfo['name'] != "") {
       if (basicInfo['name'] != "") profile.name = basicInfo['name'];
@@ -159,7 +165,7 @@ class AppProvider extends ChangeNotifier {
         final cleanJson = response.text!.replaceAll('```json', '').replaceAll('```', '').trim();
         final data = jsonDecode(cleanJson);
 
-        // Update Profile Object
+        // 2. Update Profile Object locally
         profile.name = data['name'] ?? profile.name;
         profile.email = data['email'] ?? profile.email;
         profile.skills = List<String>.from(data['skills'] ?? []);
@@ -178,17 +184,21 @@ class AppProvider extends ChangeNotifier {
               skills: List<String>.from(e.value['skills'] ?? []),
               link: e.value['link'],
             );
-
           }).toList();
         }
 
-        // 🔥 SAVE TO CLOUD
         profile.isComplete = true;
-        await _db.collection('users').doc(userId).set(profile.toMap());
 
-        addLog('ARTIFACT', 'Profile saved to cloud database.', 'SUCCESS');
+        Map<String, dynamic> userUpdate = profile.toMap();
+        userUpdate['resume'] = cleanJson;
+
+        await _db.collection('users').doc(userId).set(
+          userUpdate,
+          SetOptions(merge: true),
+        );
+
+        addLog('ARTIFACT', 'Profile & Gemini analysis saved to Cloud.', 'SUCCESS');
         notifyListeners();
-
       }
     } catch (e) {
       addLog('ARTIFACT', 'Parsing Failed: $e', 'ERROR');
