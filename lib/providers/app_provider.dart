@@ -14,7 +14,7 @@ import '../services/resume_services.dart';
 class AppProvider extends ChangeNotifier {
   // 🔥 FIREBASE SETUP
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+  String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
   // State
   StudentProfile profile = kDefaultProfile;
@@ -128,20 +128,13 @@ class AppProvider extends ChangeNotifier {
   // ---------------------------------------------------------------------------
 
   Future<void> runResumeParser(String text) async {
-    if (userId == null) {
+    final currentUid = userId; // Use the getter we just created
+    if (currentUid == null) {
       addLog('SYSTEM', 'No user logged in. Cannot save profile.', 'ERROR');
       return;
     }
 
     addLog('ARTIFACT', 'Analyzing resume text...', 'INFO');
-
-    // 1. Quick Regex Update for UI feedback
-    final basicInfo = ResumeService.extractBasicInfo(text);
-    if (basicInfo['email'] != "" || basicInfo['name'] != "") {
-      if (basicInfo['name'] != "") profile.name = basicInfo['name'];
-      if (basicInfo['email'] != "") profile.email = basicInfo['email'];
-      notifyListeners();
-    }
 
     try {
       if (apiKey.isNotEmpty) {
@@ -149,23 +142,22 @@ class AppProvider extends ChangeNotifier {
 
         final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
         final prompt = '''
-          Extract data from this resume into JSON.
-          Schema: {
-            "name": "String",
-            "email": "String",
-            "skills": ["String"],
-            "education": [{"school": "String", "degree": "String", "year": "String"}],
-            "projects": [{"name": "String", "description": "String", "skills": ["String"]}],
-            "experience_bullets": ["String"]
-          }
-          Resume Text: $text
-        ''';
+        Extract data from this resume into JSON.
+        Schema: {
+          "name": "String",
+          "email": "String",
+          "skills": ["String"],
+          "education": [{"school": "String", "degree": "String", "year": "String"}],
+          "projects": [{"name": "String", "description": "String", "skills": ["String"]}],
+          "experience_bullets": ["String"]
+        }
+        Resume Text: $text
+      ''';
 
         final response = await model.generateContent([Content.text(prompt)]);
         final cleanJson = response.text!.replaceAll('```json', '').replaceAll('```', '').trim();
         final data = jsonDecode(cleanJson);
 
-        // 2. Update Profile Object locally
         profile.name = data['name'] ?? profile.name;
         profile.email = data['email'] ?? profile.email;
         profile.skills = List<String>.from(data['skills'] ?? []);
@@ -174,7 +166,6 @@ class AppProvider extends ChangeNotifier {
         if (data['education'] != null) {
           profile.education = (data['education'] as List).map((e) => Education.fromMap(e)).toList();
         }
-
         if (data['projects'] != null) {
           profile.projects = (data['projects'] as List).asMap().entries.map((e) {
             return Project(
@@ -182,26 +173,25 @@ class AppProvider extends ChangeNotifier {
               name: e.value['name'] ?? "Project",
               description: e.value['description'] ?? "",
               skills: List<String>.from(e.value['skills'] ?? []),
-              link: e.value['link'],
             );
           }).toList();
         }
-
         profile.isComplete = true;
 
-        Map<String, dynamic> userUpdate = profile.toMap();
-        userUpdate['resume'] = cleanJson;
+        Map<String, dynamic> updateData = profile.toMap();
+        updateData['resume'] = cleanJson; // Adding the field here
 
-        await _db.collection('users').doc(userId).set(
-          userUpdate,
+        await _db.collection('users').doc(currentUid).set(
+          updateData,
           SetOptions(merge: true),
         );
 
-        addLog('ARTIFACT', 'Profile & Gemini analysis saved to Cloud.', 'SUCCESS');
+        addLog('ARTIFACT', 'Profile & Analysis updated in Firestore.', 'SUCCESS');
         notifyListeners();
       }
     } catch (e) {
       addLog('ARTIFACT', 'Parsing Failed: $e', 'ERROR');
+      print("Firestore Error: $e");
     }
   }
 
