@@ -42,6 +42,7 @@ class JobsScreen extends StatelessWidget {
               itemCount: provider.jobs.length,
               itemBuilder: (ctx, i) {
                 final job = provider.jobs[i];
+
                 return GlassContainer(
                   padding: 20,
                   child: Column(

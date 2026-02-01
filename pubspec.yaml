@@ -11,12 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  file_picker: ^10.3.10
+  file_picker: ^8.0.0
   google_mlkit_text_recognition: ^0.15.0
   provider: ^6.0.0
   fl_chart: ^0.66.0
   google_fonts: ^6.1.0
-  google_generative_ai: ^0.2.0
+  google_generative_ai: ^0.4.6
   intl: ^0.19.0
   lucide_icons: ^0.257.0
   firebase_core: 4.4.0

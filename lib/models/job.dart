@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 enum JobStatus { NEW, QUEUED, PROCESSING, APPLIED, FAILED, SKIPPED }
 
 class Job {
-  // New Fields from your JSON
+
   final String id;              // Maps to 'jobId'
   final String role;            // Maps to 'role'
   final String company;

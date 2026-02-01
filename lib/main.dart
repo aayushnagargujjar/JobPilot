@@ -42,7 +42,7 @@ class JobPilotApp extends StatelessWidget {
           if (snapshot.hasData) {
             return const MainScreen();
           }
-          return const MainScreen();
+          return const AuthScreen();
         },
       ),
     );

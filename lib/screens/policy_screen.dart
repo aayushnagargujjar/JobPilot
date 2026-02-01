@@ -126,7 +126,7 @@ class _PolicyScreenState extends State<PolicyScreen> {
         ),
         const SizedBox(height: 24),
 
-        // --- API Configuration Section ---
+        /*// --- API Configuration Section ---
         GlassContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +156,7 @@ class _PolicyScreenState extends State<PolicyScreen> {
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 24),*/
 
         // --- Account Management (REPLACED SEED DATA) ---
         GlassContainer(

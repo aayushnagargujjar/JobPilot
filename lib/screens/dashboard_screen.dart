@@ -26,9 +26,11 @@ class DashboardScreen extends StatelessWidget {
     };
 
     return ListView(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       children: [
-
+        // ----------------------
+        // 1. STATS GRID
+        // ----------------------
         LayoutBuilder(builder: (ctx, constraints) {
           final width = constraints.maxWidth;
           final cols = width > 800 ? 4 : (width > 500 ? 2 : 1);
@@ -44,33 +46,38 @@ class DashboardScreen extends StatelessWidget {
           );
         }),
 
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
-
+        // ----------------------
+        // 2. CHART + TERMINAL
+        // ----------------------
         LayoutBuilder(builder: (ctx, constraints) {
           if (constraints.maxWidth > 900) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 2, child: _ActivityChart(stats: stats)),
-                SizedBox(width: 24),
-                Expanded(flex: 1, child: _LiveTerminal()),
+                const SizedBox(width: 24),
+                // Expanded(flex: 1, child: _LiveTerminal()), // Old Stateless Widget
+                const Expanded(flex: 1, child: LiveTerminal()), // New Stateful Widget
               ],
             );
           } else {
             return Column(
               children: [
                 _ActivityChart(stats: stats),
-                SizedBox(height: 24),
-                _LiveTerminal(),
+                const SizedBox(height: 24),
+                const LiveTerminal(), // New Stateful Widget
               ],
             );
           }
         }),
 
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
-
+        // ----------------------
+        // 3. RECENT TABLE
+        // ----------------------
         GlassContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,14 +85,14 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Recent Applications", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  const Text("Recent Applications", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   TextButton(
                     onPressed: () => onNavigate(1),
-                    child: Row(children: [Text("View All"), Icon(LucideIcons.chevronRight, size: 16)]),
+                    child: const Row(children: [Text("View All"), Icon(LucideIcons.chevronRight, size: 16)]),
                   )
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
@@ -100,15 +107,17 @@ class DashboardScreen extends StatelessWidget {
                   rows: provider.jobs.where((j) => j.status != JobStatus.NEW).take(5).map((job) {
                     return DataRow(cells: [
                       DataCell(Text(job.company, style: TextStyle(fontWeight: FontWeight.bold))),
+                      DataCell(Text(job.role)),
                       DataCell(StatusBadge(status: job.status)),
                       DataCell(Text("${job.matchScore}%", style: TextStyle(color: job.matchScore > 80 ? Colors.greenAccent : Colors.amber))),
-                      DataCell(job.evidenceUsed != null ? Icon(LucideIcons.checkCircle, size: 16, color: AppTheme.primary) : Text("-")),
+                      DataCell(job.evidenceUsed != null ? Icon(LucideIcons.checkCircle, size: 16, color: AppTheme.primary) : const Text("-")),
+
                     ]);
                   }).toList(),
                 ),
               ),
               if (provider.jobs.where((j) => j.status != JobStatus.NEW).isEmpty)
-                Padding(padding: EdgeInsets.all(24), child: Center(child: Text("No activity yet", style: TextStyle(color: Colors.grey)))),
+                const Padding(padding: EdgeInsets.all(24), child: Center(child: Text("No activity yet", style: TextStyle(color: Colors.grey)))),
             ],
           ),
         ),
@@ -120,7 +129,7 @@ class DashboardScreen extends StatelessWidget {
     return Container(
       width: width,
       height: 120,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.03),
         borderRadius: BorderRadius.circular(20),
@@ -134,7 +143,7 @@ class DashboardScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(label.toUpperCase(), style: GoogleFonts.inter(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.grey)),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(value, style: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.bold, color: color)),
             ],
           ),
@@ -152,7 +161,7 @@ class _ActivityChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.03),
         borderRadius: BorderRadius.circular(24),
@@ -161,8 +170,8 @@ class _ActivityChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Activity Overview", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          SizedBox(height: 24),
+          const Text("Activity Overview", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 24),
           Expanded(
             child: BarChart(
               BarChartData(
@@ -173,19 +182,19 @@ class _ActivityChart extends StatelessWidget {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(showTitles: true, getTitlesWidget: (val, meta) {
                       switch (val.toInt()) {
-                        case 0: return Text('Applied', style: TextStyle(color: Colors.grey, fontSize: 10));
-                        case 1: return Text('Queued', style: TextStyle(color: Colors.grey, fontSize: 10));
-                        case 2: return Text('Failed', style: TextStyle(color: Colors.grey, fontSize: 10));
-                        case 3: return Text('Blocked', style: TextStyle(color: Colors.grey, fontSize: 10));
-                        default: return Text('');
+                        case 0: return const Text('Applied', style: TextStyle(color: Colors.grey, fontSize: 10));
+                        case 1: return const Text('Queued', style: TextStyle(color: Colors.grey, fontSize: 10));
+                        case 2: return const Text('Failed', style: TextStyle(color: Colors.grey, fontSize: 10));
+                        case 3: return const Text('Blocked', style: TextStyle(color: Colors.grey, fontSize: 10));
+                        default: return const Text('');
                       }
                     }),
                   ),
-                  leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                 ),
-                gridData: FlGridData(show: false),
+                gridData: const FlGridData(show: false),
                 borderData: FlBorderData(show: false),
                 barGroups: [
                   _makeGroup(0, stats['Applied']!, Colors.greenAccent),
@@ -203,26 +212,69 @@ class _ActivityChart extends StatelessWidget {
 
   BarChartGroupData _makeGroup(int x, int y, Color color) {
     return BarChartGroupData(x: x, barRods: [
-      BarChartRodData(toY: y.toDouble(), color: color, width: 40, borderRadius: BorderRadius.vertical(top: Radius.circular(6)))
+      BarChartRodData(toY: y.toDouble(), color: color, width: 40, borderRadius: const BorderRadius.vertical(top: Radius.circular(6)))
     ]);
   }
 }
 
-class _LiveTerminal extends StatelessWidget {
+// -----------------------------------------------------------------------------
+// 🔥 NEW STATEFUL WIDGET FOR 1-SECOND LOADER
+// -----------------------------------------------------------------------------
+class LiveTerminal extends StatefulWidget {
+  const LiveTerminal({super.key});
+
+  @override
+  State<LiveTerminal> createState() => _LiveTerminalState();
+}
+
+class _LiveTerminalState extends State<LiveTerminal> {
+  final ScrollController _scrollController = ScrollController();
+  bool _isStarting = false; // Local state to force spinner for 1s
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  // Helper to force 1s delay
+  Future<void> _handleStart(AppProvider provider) async {
+    setState(() => _isStarting = true);
+
+    // 1. Wait for 1 second visually
+    await Future.delayed(const Duration(seconds: 1));
+
+    // 2. Trigger the real logic
+    provider.runSearchAndRank();
+    provider.runAutoApplyLoop();
+
+    // 3. Turn off local loader (Provider's isRunning will take over if needed)
+    if (mounted) {
+      setState(() => _isStarting = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<AppProvider>();
-    final scrollController = ScrollController();
 
+    // Scroll to bottom whenever logs update
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (scrollController.hasClients) {
-        scrollController.animateTo(scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+            _scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut
+        );
       }
     });
 
+    // Determine if we should show the spinner (Local state OR Provider state)
+    final bool showLoader = _isStarting || provider.isRunning;
+
     return Container(
       height: 400,
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.3),
         borderRadius: BorderRadius.circular(24),
@@ -233,17 +285,21 @@ class _LiveTerminal extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(children: [Icon(LucideIcons.terminal, size: 16, color: AppTheme.secondary), SizedBox(width: 8), Text("Live Agent", style: TextStyle(fontWeight: FontWeight.bold))]),
+              Row(children: [Icon(LucideIcons.terminal, size: 16, color: AppTheme.secondary), const SizedBox(width: 8), const Text("Live Agent", style: TextStyle(fontWeight: FontWeight.bold))]),
               Container(
                   width: 8, height: 8,
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: provider.isRunning ? Colors.green : Colors.grey, boxShadow: provider.isRunning ? [BoxShadow(color: Colors.green, blurRadius: 10)] : null)
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: provider.isRunning ? Colors.green : Colors.grey,
+                      boxShadow: provider.isRunning ? [const BoxShadow(color: Colors.green, blurRadius: 10)] : null
+                  )
               )
             ],
           ),
-          Divider(color: Colors.white10),
+          const Divider(color: Colors.white10),
           Expanded(
             child: ListView.builder(
-              controller: scrollController,
+              controller: _scrollController,
               itemCount: provider.logs.length,
               itemBuilder: (context, index) {
                 final log = provider.logs[index];
@@ -268,31 +324,38 @@ class _LiveTerminal extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
                 child: ElevatedButton.icon(
-                  onPressed: provider.isRunning ? null : () {
-                    provider.runSearchAndRank();
-                    provider.runAutoApplyLoop();
-                  },
-                  icon: provider.isRunning
-                      ? SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white54))
-                      : Icon(LucideIcons.play, size: 16),
-                  label: Text(provider.isRunning ? "RUNNING..." : "START AGENT"),
+                  // DISABLE BUTTON IF LOADING
+                  onPressed: showLoader ? null : () => _handleStart(provider),
+
+                  // SHOW SPINNER IF LOADING
+                  icon: showLoader
+                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white54))
+                      : const Icon(LucideIcons.play, size: 16),
+
+                  // CHANGE TEXT BASED ON STATE
+                  label: Text(
+                      _isStarting ? "STARTING..." :
+                      provider.isRunning ? "RUNNING..." :
+                      "START AGENT"
+                  ),
+
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.primary,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               IconButton(
                 onPressed: () => provider.stop(),
-                icon: Icon(LucideIcons.square),
+                icon: const Icon(LucideIcons.square),
                 style: IconButton.styleFrom(backgroundColor: Colors.white10, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
               )
             ],
